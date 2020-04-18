@@ -1,5 +1,3 @@
-const  deltas_cols = [:arena_place,:arena_victories,:arena_defences,:total_power,:maxed_heroes]
-
 function calc_delta(df,col)
     calc = by(df,:name) do dd
         (current = dd[:,col] - lag(dd[:,col]),
