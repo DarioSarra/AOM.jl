@@ -1,0 +1,13 @@
+name = "AOM"
+uuid = "4caa3684-15dd-4b61-b700-8c43086d0f4c"
+authors = ["Dario Sarra"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
