@@ -23,7 +23,7 @@ function elaborate(full)
     sort!(elab,[:name,:date])
     elab.total = elab.arena_place + elab.arena_victories + elab.arena_defences +
         elab.maxed_heroes + elab.clan_tokens + elab.raid_points + elab.portal_stones
-    permutecols!(elab,[:date,:name,:arena_place,:arena_victories,:arena_defences,
+    select!(elab,[:date,:name,:arena_place,:arena_victories,:arena_defences,
         :maxed_heroes,:clan_tokens,:raid_points,:portal_stones,:total])
     return elab
 end
@@ -31,12 +31,12 @@ end
 function last_week_results()
     full = get_stats()
     elab = elaborate(full)
-    last_week = union(elab.date)[end]
-    last_df = filter(row -> row[:date] == last_week, elab)
-    for c in names(last_df)
+    for c in names(elab)
         if !in(c,[:name,:date])
-            last_df[!,c] = tiedrank(last_df[!,c],rev = true)
+            elab[!,c] = tiedrank(elab[!,c],rev = true)
         end
     end
+    last_week = union(elab.date)[end]
+    last_df = filter(row -> row[:date] == last_week, elab)
     return last_df
 end

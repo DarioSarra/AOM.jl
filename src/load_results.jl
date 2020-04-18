@@ -34,7 +34,7 @@ function complete_stats(full)
         days = union(full.date)
         for d in days
             if !in(d,dd.date)
-                println(dd.name[1])
+                println("missing data for $(dd.name[1]) day $(dd.date[1])")
                 push!(full,[d,dd.name[1],dd.role[end], missings(8)...])
             end
         end
