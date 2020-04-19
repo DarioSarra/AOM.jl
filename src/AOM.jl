@@ -17,6 +17,7 @@ include("elaborate.jl")
 export past_members, curr_members
 export append_stats, get_stats
 export calc_delta, deltas, ZScores
+export repeat_by!, delta
 export deltas_cols, z_cols, colwise_op, elaborate
 export update_results, last_week
 

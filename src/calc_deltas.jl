@@ -1,3 +1,5 @@
+delta(vec) = vec - lag(vec)
+
 function calc_delta(df,col)
     calc = by(df,:name) do dd
         (current = dd[:,col] - lag(dd[:,col]),
