@@ -28,15 +28,24 @@ function elaborate(full)
     return elab
 end
 
-function last_week_results()
+function update_results()
     full = get_stats()
     elab = elaborate(full)
-    for c in names(elab)
-        if !in(c,[:name,:date])
-            elab[!,c] = tiedrank(elab[!,c],rev = true)
-        end
-    end
-    last_week = union(elab.date)[end]
-    last_df = filter(row -> row[:date] == last_week, elab)
-    return last_df
+    rank_df = by(elab,:date,[names(elab)...] =>
+        x -> (name = x.name,
+        arena_place = tiedrank(x.arena_place,rev = true),
+        arena_victories = tiedrank(x.arena_victories,rev = true),
+        arena_defences = tiedrank(x.arena_defences,rev = true),
+        maxed_heroes = tiedrank(x.maxed_heroes,rev = true),
+        clan_tokens = tiedrank(x.clan_tokens,rev = true),
+        raid_points = tiedrank(x.raid_points,rev = true),
+        portal_stones = tiedrank(x.portal_stones,rev = true),
+        total = tiedrank(x.total,rev = true),
+        ))
+    return elab, rank_df
+end
+
+function last_week(df)
+    l_w = union(df.date)[end]
+    last_df = filter(row -> row[:date] == l_w, df)
 end
