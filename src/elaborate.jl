@@ -47,8 +47,3 @@ function update_results()
     elab = elaborate(full)
     return elab
 end
-
-function lastweek(df)
-    l_w = union(df.date)[end]
-    last_df = filter(row -> row[:date] == l_w, df)
-end
