@@ -25,7 +25,7 @@ function repeat_by!(df,f,b,cc, n)
 end
 
 function elaborate(df)
-    df = get_stats()
+    # df = get_stats()
     repeat_by!(df,delta,:name,deltas_cols,"delta")
     cc = deltas_cols
     c_list = [Symbol(join(["delta", x],"_")) for x in deltas_cols]
@@ -42,8 +42,8 @@ function elaborate(df)
     return df
 end
 
-function update_results()
-    full = get_stats()
+function update_results(clan::String)
+    full = get_stats(clan)
     elab = elaborate(full)
     return elab
 end
