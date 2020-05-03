@@ -11,8 +11,8 @@ const col_types = Dict(
     :raid_points => Union{Missing, Float64},
     :portal_stones => Union{Missing, Float64})
 
-function append_stats(clan::String)
-    dir = joinpath(stats_path,clan)
+function append_stats(clan::AbstractDict)
+    dir = joinpath(stats_path,clan[:name])
     files = joinpath.(dir,readdir(dir))
     filter!(t -> !occursin.("DS_Store",t),files)
     full = DataFrame()
@@ -43,7 +43,7 @@ function complete_stats(full)
     sort!(full,(:date,:name))
 end
 
-function get_stats(clan::String)
+function get_stats(clan::AbstractDict)
     df = append_stats(clan)
     complete_stats(df)
 end

@@ -1,6 +1,3 @@
-const deltas_cols = [:arena_place,:arena_victories,:arena_defences,:total_power,:maxed_heroes]
-const z_cols = [:clan_tokens,:raid_points,:portal_stones]
-
 cust_z(x,μ,σ) = ismissing(x) ? 0.0 : (x - μ)/σ
 
 function ZScores(x::AbstractArray)
@@ -42,7 +39,7 @@ function elaborate(df)
     return df
 end
 
-function update_results(clan::String)
+function update_results(clan::AbstractDict)
     full = get_stats(clan)
     elab = elaborate(full)
     return elab
