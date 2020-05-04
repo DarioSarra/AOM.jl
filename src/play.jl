@@ -7,7 +7,6 @@ plot_results(RequiemFusion;remove = ["Mazsola"])
 res = update_results(RequiemFusion)
 lw = lastweek(res)
 pub = adjust_to_show(lw)
-pub[!,:arena_place] = round.(pub[!,:arena_place];digits = 2)
 open_html_table(pub)
 ##
 using DataFrames
