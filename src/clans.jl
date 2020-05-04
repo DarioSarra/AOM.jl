@@ -38,3 +38,41 @@ const RequiemFusion = Dict(
         "Fryseboksen"
         ]
     )
+
+const BoethiasChampions = Dict(
+    :name => "BoethiasChampions",
+    :current_members => [
+        "Alnitak",
+        "Antar",
+        "Aras-LT",
+        "Ashen",
+        "Chizzy",
+        "Clam",
+        "Dark",
+        "Defeated",
+        "Eraser",
+        "Flmfx",
+        "GodofWar",
+        "Grakas",
+        "Hellsorcerer",
+        "Hollaaa",
+        "Hsubox",
+        "Lie_to_me",
+        "loki",
+        "Malachai",
+        "Mantis",
+        "Mellow",
+        "Myname",
+        "Peppe",
+        "Pigbag",
+        "Rukes",
+        "Sagitarius",
+        "Saint",
+        "Sicarium",
+        "Skytng",
+        "Spinesnap"
+    ],
+    :past_members => [
+        "Ilya"
+    ]
+)

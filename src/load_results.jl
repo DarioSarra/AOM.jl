@@ -9,7 +9,10 @@ const col_types = Dict(
     :maxed_heroes => Union{Missing, Float64},
     :clan_tokens => Union{Missing, Float64},
     :raid_points => Union{Missing, Float64},
-    :portal_stones => Union{Missing, Float64})
+    :portal_stones => Union{Missing, Float64},
+    :Artus => Union{Missing, Float64},
+    :Trorin => Union{Missing, Float64}
+    )
 
 function append_stats(clan::AbstractDict)
     dir = joinpath(stats_path,clan[:name])
@@ -25,10 +28,14 @@ function append_stats(clan::AbstractDict)
             append!(full,df)
         end
     end
-    filter!(r -> !in(r[:name],past_members),full)
+    filter!(r -> !in(r[:name],clan[:past_members]),full)
+    if :Artus in names(full)
+        select!(full,Not([:Artus,:Trorin]))
+    end
     return full
 end
 
+## add missing values for dates were new members have no data
 function complete_stats(full)
     sort!(full,(:date,:name))
     df = by(full,:name) do dd
@@ -36,7 +43,7 @@ function complete_stats(full)
         for d in days
             if !in(d,dd.date)
                 println("missing data for $(dd.name[1]) day $(dd.date[1])")
-                push!(full,[d,dd.name[1],dd.role[end], missings(8)...])
+                push!(full,[d,dd.name[1],dd.role[end], missings(ncol(full)-3)...])
             end
         end
     end

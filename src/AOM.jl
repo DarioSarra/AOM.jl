@@ -21,6 +21,6 @@ export append_stats, get_stats
 export repeat_by!, delta, cust_z, ZScores, elaborate, update_results
 export lastweek, adjust_to_show
 export plot_results
-export RequiemFusion
+export RequiemFusion, BoethiasChampions
 
 end # module
