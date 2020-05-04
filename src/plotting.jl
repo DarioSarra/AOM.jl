@@ -1,9 +1,9 @@
 function plot_results(lw::AbstractDataFrame)
-    add_colors!(lw)
-    lw[!,:xname] = ["# $(r.rank_zscore_total) $(r.name)" for r in eachrow(lw)]
+    lw[!,:xname] = ["# $(Int64(round(r.rank_zscore_total))) $(r.name)" for r in eachrow(lw)]
     lw[!,:notey] = [(r.zscore_total >= 0.0 ? r.zscore_total + 0.5 : r.zscore_total - 0.5) for r in eachrow(lw)]
     lw[!,:note] =[(r.rank_zscore_total, r.notey, Plots.text("$(round(r.zscore_total,digits=1))",:center,12)) for r in eachrow(lw)]
     sort!(lw,:rank_zscore_total)
+    add_colors!(lw)
     fig = plot(ylabel = "Zscore",
         xlabel = "Ranking",
         guidefontsize=18,
