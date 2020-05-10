@@ -13,7 +13,7 @@ function repeat_by!(df,f,b,cc, n)
     for c in c_list
         df[!,c] = Vector{Union{Float64,Missing}}(undef,nrow(df))
     end
-    by(df,b) do dd
+    combine(groupby(df,b)) do dd
         for (col,rcol) in zip(cc,c_list)
             dd[:,rcol] = f(dd[:,col])
         end

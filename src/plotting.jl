@@ -26,7 +26,7 @@ function plot_results(clan::AbstractDict; remove = ["player_names"])
     lw = lastweek(res)
     filt = filter(row -> !in(row.name,remove),lw)
     p = AOM.plot_results(filt)
-    filename = clan[:name]*"_"*string(lw.date[1])*".png"
+    filename = clan[:name]*"_"*string(today())*".png"
     dir = "/Users/dariosarra/Documents/House/AOM/Stats/"
     savefig(p,joinpath(dir,filename))
     return p

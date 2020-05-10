@@ -2,7 +2,7 @@ using Revise
 using AOM
 using BrowseTables
 ##
-plot_results(RequiemFusion;remove = ["Mazsola"])
+plot_results(RequiemFusion) #;remove = ["Mazsola"])
 ##
 res = update_results(RequiemFusion)
 lw = lastweek(res)

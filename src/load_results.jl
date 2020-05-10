@@ -38,7 +38,7 @@ end
 ## add missing values for dates were new members have no data
 function complete_stats(full)
     sort!(full,(:date,:name))
-    df = by(full,:name) do dd
+    df = combine(groupby(full,:name)) do dd
         days = union(full.date)
         for d in days
             if !in(d,dd.date)
