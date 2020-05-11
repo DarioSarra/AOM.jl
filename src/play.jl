@@ -6,6 +6,7 @@ plot_results(RequiemFusion) #;remove = ["Mazsola"])
 ##
 res = update_results(RequiemFusion)
 lw = lastweek(res)
+open_html_table(lw)
 pub = adjust_to_show(lw)
 open_html_table(pub)
 ##
@@ -22,3 +23,9 @@ lw = lastweek(res)
 pub = adjust_to_show(lw)
 open_html_table(pub)
 p = AOM.plot_results(lw)
+##
+using Plots
+pow = dropmissing(res)
+gd = groupby(pow,:date)
+p = combine(gd,:total_power=>sum=>:clan_power)
+scatter(p[:,:date],p[:,:clan_power])
