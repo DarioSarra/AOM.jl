@@ -4,6 +4,7 @@ const RequiemFusion = Dict(
         "AngelaPapi",
         "Annanana",
         "Berserkresse",
+        "Black Dahlia",
         "bnv",
         "Breyn",
         "D_Mac",
@@ -26,16 +27,17 @@ const RequiemFusion = Dict(
         "Minimoose27",
         "MrMilanna",
         "Psykosis",
-        "sillien",
         "skinwalker",
         "The Wiza",
-        "TRUNG",
+        "uncleb",
         "WhoTFCars"
         ],
     :past_members => [
         "Rhellik",
         "Tristanslav",
-        "Fryseboksen"
+        "Fryseboksen",
+        "sillien",
+        "TRUNG"
         ]
     )
 
